@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="../../static/info/css/global.css">
+        <link rel="stylesheet" href="../../static/info/css/home.css">
+        <link rel="stylesheet" href="../../static/info/css/projects.css">
+        <link rel="stylesheet" href="../../static/info/css/blog.css">
+        <script src="https://unpkg.com/htmx.org@1.8.2" integrity="sha384-+8ISc/waZcRdXCLxVgbsLzay31nCdyZXQxnsUy++HJzJliTzxKWr0m1cIEMyUzQu" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="page-container">
+            <div id="nav-container">
+                <nav>
+                    <p id="site-title">
+                        Christian Madajski's<br>
+                        <em>P O R T A L</em>
+                    </p>
+                    <div id="main-nav-links">
+                        <button id="home" class="active navbutton" hx-get="/update_active/?active=home" hx-trigger="click" hx-target="#main-nav-links" hx-swap="innerhtml">Home</button>
+                        <button id="projects" class="navbutton" hx-get="/update_active/?active=projects" hx-trigger="click" hx-target="#main-nav-links" hx-swap="innerhtml">Projects</button>
+                        <button id="blog" class="navbutton" hx-get="/update_active/?active=blog" hx-trigger="click" hx-target="#main-nav-links" hx-swap="innerhtml">Blog</button>
+                    </div>
+                </nav>
+            </div>
+            <div id="content-container" hx-get="{% url 'update_content' %}" hx-trigger="load, click from:#main-nav-links delay:0.2s" hx-target="#content-container" hx-swap="innerhtml">
+                
+            </div>
+        </div>
+    </body>
+</html>

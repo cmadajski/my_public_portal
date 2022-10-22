@@ -1,0 +1,82 @@
+body {
+    display: grid;
+    grid-template-rows: 3;
+    grid-template-columns: 3;
+    grid-template-rows: 10% 80% 10%;
+    grid-template-columns: 20% 60% 20%;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(40, 40, 40);
+    font-family: sans-serif;
+    height: 100vh;
+}
+
+#page-container {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 2fr;
+    grid-row: 2;
+    grid-column: 2;
+    border-radius: 20px;
+    border-top: 1px solid rgb(220, 220, 220);
+    box-shadow: 5px 5px 0 rgb(220, 220, 220);
+}
+
+#nav-container {
+    grid-row: 1;
+    grid-column: 1;
+    background-color: rgb(220, 220, 220);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+#content-container {
+    grid-row: 1;
+    grid-column: 2;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: scroll;
+    color: rgb(220, 220, 220);
+    padding: 10px;
+}
+
+#site-title {
+    font-size: 32px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.navbutton {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    padding: 40px 0;
+    border-top: 1px solid rgb(40, 40, 40);
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    background-color: rgb(220, 220, 220);
+    transition: 200ms;
+}
+
+#blog {
+    border-bottom: 1px solid rgb(40, 40, 40);
+}
+
+.navbutton:hover, .navbutton:focus {
+    cursor: pointer;
+    background-color: rgb(40, 40, 40);
+    color: gold;
+}
+
+#main-nav-links {
+    transition: 200ms;
+}
+
+.active {
+    background-color: rgb(40, 40, 40);
+    color: gold;
+    font-weight: 700;
+    transition: 200ms;
+}
