@@ -1,36 +1,50 @@
 <div id="info">
-    <h2 class="info-header">Introduction</h2>
-    <p>
-        Hello world, my name is <strong>Christian Madajski</strong> and
-        I currently work as a <strong>Software Engineer I</strong> at a major bank.
-        My location is <strong>Charlotte, NC</strong> and I do <em>not</em>
-        want to relocate to anywhere else at this time.
-    </p>
-    <h2 class="info-header">Technical Background</h2>
-    <p>
-        My primary programming language is <strong>Python</strong>, but I also have
-        exposure to Javascript, C, Java, and Golang. I primarily work with various web
-        technologies like <strong>Django</strong>, Flask, and FastAPI for building both
-        browsable websites as well as REST APIs. I also have experience with automation
-        pipelines utilizing <strong>Jenkins</strong>, Apache Airflow, GitHub, and more.
-        I use <strong>PyTest</strong> for unit testing and <strong>Selenium</strong>
-        for integration testing. I am familiar with the Atlassian suite 
-        <strong>(Confluence, Jira, BitBucket)</strong> for code documentation and management.
-     </p>
-     <p>
-        I am well versed in Unix-based systems such as <strong>RHEL</strong>, Fedora, and Ubuntu. I
-        can write both <strong>Bash</strong> and Python scripts for interfacing with the OS and automating
-        tasks. I am currently working on certifications for <strong>Google Cloud Platform</strong> and 
-        Microsoft Azure.
-     </p>
-     <h2>Education</h2>
-     <p>
-        I graduated in May 2022 with a <strong>Bachelors of Computer Science</strong>
-        from UNC Charlotte. I also continue to learn new skills by reading through
-        technical documentation and taking courses through <a href="https://www.codecademy.com/" target="_blank">Codecademy</a>.
-     </p>
-     <h2>Contact Details</h2>
-     <p>
-        Work experience, email, and phone number are available <a href="../../static/info/pdf/resume_v11_cmadajski.pdf" title="Click to download resume" download>on my resume</a>.
-     </p>
+    <h2 >Introduction</h2>
+    <div id="img-next-to-table">
+        <img id="profile-img" src="https://avatars.githubusercontent.com/u/95318426?v=4" width="200px" height="200px" alt="Headshot of Christian">
+        <table id="intro-table">
+            {% for key, value in personal.items %}
+            <tr>
+                <td class="label">{{ key }}</td>
+                {% if value == False %}
+                <td class="false">{{ value }}</td>
+                {% elif value == True %}
+                <td class="true">{{ value }}</td>
+                {% else %}
+                <td>{{ value }}</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <hr>
+    <h2>Technical Background</h2>
+    <table>
+        {% for key, value in tech.items %}
+        <tr>
+            <td class="label">{{ key }}</td>
+            {% for item in value %}
+            <td>{{ item }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    <hr>
+    <h2>Contact Details</h2>
+    <table id="contact">
+        {% for key, value in contact.items %}
+        <tr>
+            <td class="label">{{ key }}</td>
+            {% if key == 'Resume' %}
+            <td><a href="{{ value.url }}" download>{{ value.text }}</a></td>
+            {% elif key == 'GitHub' %}
+            <td><a href="{{ value.url }}" target="_blank">{{ value.text }}</a></td>
+            {% elif key == 'LinkedIn' %}
+            <td><a href="{{ value.url }}" target="_blank">{{ value.text }}</a></td>
+            {% else %}
+            <td>{{ value }}</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
 </div>

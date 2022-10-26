@@ -1,47 +1,41 @@
 body {
-    display: grid;
-    grid-template-rows: 3;
-    grid-template-columns: 3;
-    grid-template-rows: 10% 80% 10%;
-    grid-template-columns: 20% 60% 20%;
+    
     margin: 0;
     padding: 0;
     background-color: rgb(40, 40, 40);
     font-family: sans-serif;
-    height: 100vh;
+    font-size: 18px;
+    height: 98vh;
 }
 
 #page-container {
     display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 100%;
+    grid-template-columns: 20% 80%;
     grid-row: 2;
     grid-column: 2;
-    border-radius: 20px;
-    border-top: 1px solid rgb(220, 220, 220);
-    box-shadow: 5px 5px 0 rgb(220, 220, 220);
 }
 
 #nav-container {
+    position: fixed;
+    width: 350px;
+    height: 100vh;
     grid-row: 1;
     grid-column: 1;
     background-color: rgb(220, 220, 220);
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
 }
 
 #content-container {
     grid-row: 1;
     grid-column: 2;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    overflow: scroll;
+    overflow-y: scroll;
     color: rgb(220, 220, 220);
     padding: 10px;
 }
 
+
 #site-title {
-    font-size: 32px;
+    font-size: 42px;
     text-align: center;
     margin: 20px 0;
 }
@@ -50,18 +44,18 @@ body {
     display: block;
     width: 100%;
     text-align: center;
-    font-size: 24px;
-    padding: 40px 0;
-    border-top: 1px solid rgb(40, 40, 40);
+    font-size: 32px;
+    padding: 20px 0;
+    border-top: 2px solid rgb(40, 40, 40);
     border-bottom: none;
     border-left: none;
     border-right: none;
     background-color: rgb(220, 220, 220);
-    transition: 200ms;
+    transition: 150ms ease-in;
 }
 
 #blog {
-    border-bottom: 1px solid rgb(40, 40, 40);
+    border-bottom: 2px solid rgb(40, 40, 40);
 }
 
 .navbutton:hover, .navbutton:focus {
@@ -71,7 +65,12 @@ body {
 }
 
 #main-nav-links {
-    transition: 200ms;
+    transition: 1s;
+}
+
+#main-nav-links.htmx-swapping {
+    opacity: 0;
+    transition: opacity 1s ease-out;
 }
 
 .active {
@@ -79,4 +78,18 @@ body {
     color: gold;
     font-weight: 700;
     transition: 200ms;
+}
+
+#content-container.htmx-swapping {
+    opacity: 0;
+    transition: opacity 150ms ease-out;
+}
+
+#content-container.htmx-added {
+    opacity: 0;
+}
+
+#content-container {
+    opacity: 1;
+    transition: opacity 150ms ease-in;
 }

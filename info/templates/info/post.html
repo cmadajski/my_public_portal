@@ -1,0 +1,9 @@
+<div class="single-post">
+    <h1>{{ post.title }}</h1>
+    <p class="blog-post-meta">
+        Author: Christian Madajski | Posted: {{ post.date_posted|date:'M/d/Y' }} | Updated: {{ post.date_updated|date:'M/d/Y' }}
+    </p>
+    {% for element in content %}
+    {{ element|safe }}
+    {% endfor %}
+</div>

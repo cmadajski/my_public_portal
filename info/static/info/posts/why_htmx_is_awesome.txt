@@ -1,0 +1,66 @@
+Let's just get this out of the way early: I dislike most modern front-end frameworks like React, Angular, and Vue. I admit I am biased and probably not well-informed enough to actually dislike them as much as I do. Regardless, I wrinkle my nose at all those nasty frameworks. I've been waiting for a day where SPA (single page application) functionality is possible without them.
+
+That day has finally arrived... well actually, I missed the launch day by over a year. But still, the tech is here for dynamic web pages without directly working with Javascript code.
+
+HTMX is regular JS, but hidden underneath a very basic and intuitive system that meshes seamlessly with typical HTML conventions. It is genius. Just stick a couple properties in your element(s) of choice and tweak your back end code and presto, you have dynamic web pages. Inline form validation, no-refresh CRUD operations, dynamic search/sort, swap animations... there is a lot that can be done with HTMX.
+
+It just so happens to be very well suited for Django projects as well. You can effectively create HTML components by sticking code in a separate HTML file and using Django's templating tools to generate HTML snippets. It takes some time to grasp what goes where, but once everything is aligned then the functionality is smooth.
+
+## Some HTMX Examples
+
+Like I said before, interacting with HTMX starts with adding new properties to existing HTML elements. The primary five properties you need to get started are hx-get, hx-post, hx-target, hx-trigger, and hx-swap. Hx-get defines a get request to a specified endpoint, while hx-post does the same for post requests. Hx-target defines what element should be affected when a given DOM event occurs. Hx-trigger defines the DOM event(s) that cause a given action to occur. Hx-swap defines how a given element is handled during an action. The default swap action is changing the innerhtml value of an element, but you can also swap outerhmtl and others.
+
+```
+<p class="red-error" hx-get="/say_hello/" hx-target="this" hx-trigger="click" hx-swap="outerhtml">Click me to say hello!</p>
+```
+
+In the above code, we are making a clickable paragraph element that, when clicked, will send a GET request to the /say_hello endpoint and will swap the current paragraph element (including the tags) with whatever is returned from that endpoint (ideally HTML). The replacement HTML code is entirely determined by how you structure your backend response. Continuing with this example, we could set up the say_hello endpoint to return a new paragraph element with revised components. Assuming we are using Django, the backend could look like so:
+
+```
+from django.http import HttpResponse
+from django.views.decorators.http import require_GET
+
+@require_GET
+def say_hello(request):
+    html = '<p class="green-success">HELLO WORLD</p>'
+    return HttpResponse(html)
+```
+
+We can make this even more awesome by leveraging Django templating to create something equivalent to React components. Simply put all the necessary HTML code for the component in a separate HTML file, then return that code in the endpoint response. Using render() allows us to render the template using data from the request and context objects, which add a dynamic touch to our component updates and saves us a ton of work.
+
+```
+from django.shortcuts import render
+from django.views.decorators.http import require_GET
+
+@require_GET
+def say_hello(request):
+    data = Message.objects.get(name='Hello')
+    context = {'data': data}
+    return render(request, 'say_hello.html', context)
+```
+
+From a purely stylistic perspective, we can add fancy swapping animations when various components are swapped in and out. We can do this by defining custom parameters in the `.html-swapping` class for removing elements and `.html-added` for adding elements. One of the most common and easiest to implement animations is fading, which leverages the opacity parameter to change the visibility of an element. Below is an example of a fade-out for a swapped element and a fade-in for a newly added element.
+
+```
+.fade-out.htmx-swapping {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+.fade-in.htmx-added {
+    opacty: 0;
+}
+.fade-in {
+    opacity: 1;
+    transition: opacity 1s ease-in;
+}
+```
+
+Going one step further, we can also define an intermediary state to communicate to the user that something is happening by using the `.htmx-request` class:
+
+```
+.some-class.htmx-request {
+    opacity: 0.5;
+    transition: opacity 300ms;
+}
+```
+

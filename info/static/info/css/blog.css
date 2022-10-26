@@ -1,0 +1,29 @@
+.blog-post {
+    padding: 10px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.blog-button {
+    display: block;
+    width: fit-content;
+    color: gold;
+    background-color: rgb(40, 40, 40);
+    border: 1px solid gold;
+    border-radius: 10px;
+    font-size: 36px;
+    margin: 10px auto;
+    padding: 10px;
+    transition: 200ms;
+}
+
+.blog-button:hover, .blog-button:focus {
+    color: rgb(40, 40, 40);
+    background-color: gold;
+    cursor: pointer;
+}
+
+.blog-post-meta {
+    font-size: 12px;
+    font-style: italic;
+}

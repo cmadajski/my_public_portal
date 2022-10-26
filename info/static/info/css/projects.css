@@ -1,0 +1,46 @@
+.project {
+    padding: 20px 0;
+}
+.project-content {
+    display: grid;
+    grid-template-columns: 20% 65% 15%;
+    grid-template-rows: 100%;
+    gap: 5px;
+}
+
+.project-img {
+    display: block;
+    grid-row: 1;
+    grid-column: 1;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    border-radius: 20px;
+}
+
+.project-description {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.project-links {
+    grid-row: 1;
+    grid-column: 3;
+}
+
+.project-links a {
+    display: block;
+    width: fit-content;
+    text-decoration: none;
+    margin: 10px 0;
+    padding: 10px;
+    color: gold;
+    border: 1px solid gold;
+    border-radius: 10px;
+    transition: 200ms;
+}
+
+.project-links a:hover, .project-links a:focus {
+    color: rgb(40, 40, 40);
+    background-color: gold;
+}

@@ -1,0 +1,8 @@
+{% for post in posts %}
+<div class="blog-post">
+    <button class="blog-button" hx-get="/get_blog_post/{{ post.id }}/">{{ post.title }} &#8680;</button>
+    <p>{{ post.description }}</p>
+    <p class="blog-post-meta">Author: Christian Madajski | Posted: {{ post.date_posted|date:'M/d/Y' }} | Updated: {{ post.date_updated|date:'M/d/Y' }}</p>
+</div>
+<hr>
+{% endfor %}

@@ -1,0 +1,37 @@
+
+.single-post {
+
+}
+
+.single-post h1 {
+    font-size: 48px;
+    width: fit-content;
+    margin: 10px auto;
+    border-bottom: 4px solid gold;
+}
+
+.single-post h2 {
+    font-size: 36px;
+    width: fit-content;
+    border-bottom: 2px solid gold;
+    margin: 10px 0;
+}
+
+.single-post h3 {
+    font-size: 28px;
+    width: fit-content;
+    border-bottom: 1px solid gold;
+}
+
+.blog-post-meta {
+    width: fit-content;
+    margin: 10px auto;
+}
+
+pre {
+    color: rgb(255, 87, 26);
+    background-color: black;
+    border-radius: 10px;
+    padding: 5px 10px;
+    width: fit-content;
+}

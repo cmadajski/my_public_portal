@@ -1,11 +1,14 @@
-<div>
-    <div class="project">
-        <p>project 1</p>
-    </div>
-    <div class="project">
-        <p>project 2</p>
-    </div>
-    <div class="project">
-        <p>project 3</p>
+{% for project in projects %}
+<div class="project">
+    <h2>{{ project.title }}</h2>
+    <div class="project-content">
+        <img class="project-img" src="{{ project.img_url }}">
+        <p class="project-description">{{ project.description }}</p>
+        <div class="project-links">
+            <a class="to-github-repo" title="{{ project.github_url }}" href="{{ project.github_url }}" target="_blank">View Code &rarr;</a>
+            <a class="deployed-site" title="{{ project.deployed_url }}" href="{{ project.deployed_url }}" target="_blank">Visit App &rarr;</a>
+        </div>
     </div>
 </div>
+<hr>
+{% endfor %}

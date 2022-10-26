@@ -1,7 +1,62 @@
-#info h2 {
-    font-size: 36px;
+#info {
+    font-size: 18px;
 }
 
-#info p {
-    font-size: 18px;
+h2 {
+    font-size: 36px;
+    margin: 10px auto;
+    width: fit-content;
+    border-bottom: 2px solid gold;
+}
+
+#img-next-to-table {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+#profile-img {
+    display: block;
+    border-radius: 20px;
+}
+
+#intro-table {
+    margin: 20px 0;
+}
+
+.false {
+    background-color: red;
+}
+
+.true {
+    background-color: green;
+}
+
+#intro-img {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+#intro-content {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+table {
+    background-color: rgb(220, 220, 220);
+    color: rgb(40, 40, 40);
+    margin: 20px auto;
+    border-radius: 10px;
+    border-collapse: collapse;
+}
+table td {
+    border: 1px solid rgb(40, 40, 40);
+    padding: 10px;
+}
+
+.label {
+    font-weight: 700;
 }
